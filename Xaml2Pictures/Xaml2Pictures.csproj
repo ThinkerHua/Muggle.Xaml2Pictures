@@ -7,6 +7,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
         <RootNamespace>Muggle.Xaml2Pictures</RootNamespace>
+        <ApplicationIcon>Assets\Xaml2Pictures.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
