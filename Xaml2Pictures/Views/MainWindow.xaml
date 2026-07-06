@@ -10,10 +10,11 @@
         Height="480"
         MinWidth="410"
         MinHeight="330"
+        Icon="/Assets/Xaml2Pictures.ico"
         WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
         d:Width="480"
-        d:Height="480"
-        mc:Ignorable="d">
+        d:Height="480">
 
     <Window.DataContext>
         <vm:MainWindowViewModel />

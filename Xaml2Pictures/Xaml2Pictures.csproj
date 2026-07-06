@@ -18,17 +18,19 @@
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Language.Designer.cs</LastGenOutput>
         </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
+        <EmbeddedResource Update="Resources\Language.zh-hans.resx">
+            <DependentUpon>Language.resx</DependentUpon>
+        </EmbeddedResource>
         <Compile Update="Resources\Language.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>Language.resx</DependentUpon>
         </Compile>
-        <EmbeddedResource Update="Resources\Language.zh-hans.resx">
-            <DependentUpon>Language.resx</DependentUpon>
-        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Assets\Xaml2Pictures.ico" />
+        <Resource Include="Assets\Xaml2Pictures.ico" />
     </ItemGroup>
 
 </Project>
