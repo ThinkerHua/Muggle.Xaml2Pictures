@@ -13,10 +13,8 @@ public static class DrawingResourceLoader
         {
             case DrawingGroup drawingGroup:
                 return drawingGroup;
-            // 处理 DrawingBrush
             case DrawingBrush drawingBrush:
                 return drawingBrush.Drawing as DrawingGroup;
-            // 处理 GeometryDrawing
             case GeometryDrawing geometryDrawing:
             {
                 var group = new DrawingGroup();

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -56,7 +56,6 @@ public partial class MainWindowViewModel : ObservableObject {
 
     public MainWindowViewModel()
     {
-        XamlFilePath = "E:\\Documents\\Development\\Solutions\\Muggle.TsExtensions\\DC4001\\Assets\\BackgroundImages.xaml";
         DestinationDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         EncoderEnum = BitmapEncoderEnum.Bmp;
         Dpi = 96;
@@ -101,8 +100,8 @@ public partial class MainWindowViewModel : ObservableObject {
     [RelayCommand]
     private void SelectXamlFile() {
         var dialog = new OpenFileDialog {
-            Title = "Select a Xaml File",
-            Filter = "Xaml files (*.xaml)|*.xaml",
+            Title = Language.SelectXamlFile,
+            Filter = Language.XamlFilter,
             FilterIndex = 0,
             DefaultExt = ".xaml",
             CheckFileExists = true,
@@ -115,7 +114,7 @@ public partial class MainWindowViewModel : ObservableObject {
     [RelayCommand]
     private void SelectDestinationDirectory() {
         var dialog = new OpenFolderDialog() {
-            Title = "Select destination directory",
+            Title = Language.SelectDestinationDirectory,
             Multiselect = false
         };
         var result = dialog.ShowDialog();

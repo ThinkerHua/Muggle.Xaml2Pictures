@@ -1,4 +1,4 @@
-﻿namespace Muggle.Xaml2Pictures.Models;
+namespace Muggle.Xaml2Pictures.Models;
 
 public enum BitmapEncoderEnum
 {

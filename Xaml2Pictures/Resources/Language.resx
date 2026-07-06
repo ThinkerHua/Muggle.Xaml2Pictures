@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -130,9 +130,6 @@
   <data name="SourceFile" xml:space="preserve">
     <value>Source file:</value>
   </data>
-  <data name="DestinationDirectory" xml:space="preserve">
-    <value>Destination directory:</value>
-  </data>
   <data name="PictureFormat" xml:space="preserve">
     <value>Picture format:</value>
   </data>
@@ -147,5 +144,14 @@
   </data>
   <data name="SaveTo" xml:space="preserve">
     <value>Save to:</value>
+  </data>
+  <data name="SelectXamlFile" xml:space="preserve">
+    <value>Select a XAML file</value>
+  </data>
+  <data name="XamlFilter" xml:space="preserve">
+    <value>XAML resource dictionary (*.xaml)|*.xaml</value>
+  </data>
+  <data name="SelectDestinationDirectory" xml:space="preserve">
+    <value>Select destination directory</value>
   </data>
 </root>
