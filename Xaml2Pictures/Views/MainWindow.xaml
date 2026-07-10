@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Muggle.Xaml2Pictures.ViewModels"
         xmlns:res="clr-namespace:Muggle.Xaml2Pictures.Resources"
+        xmlns:vc="clr-namespace:Muggle.Xaml2Pictures.ValueConverters"
         Title="Muggle.Xaml2Pictures"
         Width="480"
         Height="480"
@@ -21,6 +22,7 @@
     </Window.DataContext>
 
     <Window.Resources>
+        <vc:BoundsToStringValueConverter x:Key="BoundsToStringValueConverter" />
 
         <DataTemplate x:Key="DrawingGroupDataTemplate" DataType="{x:Type vm:KeyValuePairWrapper}">
             <Grid Width="128">
@@ -29,7 +31,7 @@
                     <RowDefinition Height="10" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Height="128">
+                <Image Grid.Row="0" Height="128" ToolTip="{Binding Value.Bounds, Converter={StaticResource BoundsToStringValueConverter}}">
                     <Image.Source>
                         <DrawingImage Drawing="{Binding Value}" />
                     </Image.Source>

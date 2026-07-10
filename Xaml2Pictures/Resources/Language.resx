@@ -154,4 +154,11 @@
   <data name="SelectDestinationDirectory" xml:space="preserve">
     <value>Select destination directory</value>
   </data>
+  <data name="BoundsFormat" xml:space="preserve">
+    <value>Bounds:
+    X = {0},
+    Y = {1},
+    Width = {2},
+    Height = {3}</value>
+  </data>
 </root>

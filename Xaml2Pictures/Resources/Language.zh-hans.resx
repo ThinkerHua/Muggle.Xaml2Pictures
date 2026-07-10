@@ -154,4 +154,11 @@
   <data name="SelectDestinationDirectory" xml:space="preserve">
     <value>选择目标目录</value>
   </data>
+  <data name="BoundsFormat" xml:space="preserve">
+    <value>边界：
+    X = {0},
+    Y = {1},
+    宽 = {2},
+    高 = {3}</value>
+  </data>
 </root>
