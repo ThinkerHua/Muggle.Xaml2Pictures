@@ -100,8 +100,7 @@ namespace Muggle.Xaml2Pictures.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conversion failed. Error message:
-        ///{0}.
+        ///   Looks up a localized string similar to Conversion failed..
         /// </summary>
         public static string ConversionFailed {
             get {
@@ -124,6 +123,25 @@ namespace Muggle.Xaml2Pictures.Resources {
         public static string DPI {
             get {
                 return ResourceManager.GetString("DPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ErrorMessage:
+        ///{0}.
+        /// </summary>
+        public static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load XAML file failed..
+        /// </summary>
+        public static string LoadXamlFileFailed {
+            get {
+                return ResourceManager.GetString("LoadXamlFileFailed", resourceCulture);
             }
         }
         

@@ -10,7 +10,7 @@
         <ApplicationIcon>Assets\Xaml2Pictures.ico</ApplicationIcon>
         <Authors>Huang YongXing (thinkerhua@hotmail.com)</Authors>
         <Copyright>© 2026 Huang YongXing. All rights reserved.</Copyright>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
     </PropertyGroup>
 
     <ItemGroup>

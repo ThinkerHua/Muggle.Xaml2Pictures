@@ -1,11 +1,13 @@
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace Muggle.Xaml2Pictures.Models;
 
-public static class DrawingResourceLoader
+public static partial class DrawingResourceLoader
 {
     private static DrawingGroup? ConvertToDrawingGroup(object? resource)
     {
@@ -29,16 +31,21 @@ public static class DrawingResourceLoader
 
     public static Dictionary<string, DrawingGroup> LoadAllDrawingGroups(string xamlFilePath)
     {
-        ArgumentException.ThrowIfNullOrEmpty(xamlFilePath);
-
-        var result = new Dictionary<string, DrawingGroup>();
-
         ResourceDictionary dict;
-        using (var fs = new FileStream(xamlFilePath, FileMode.Open, FileAccess.Read))
+        using (var stream = new MemoryStream(1024))
         {
-            dict = (ResourceDictionary)XamlReader.Load(fs);
+            foreach (var line in File.ReadLines(xamlFilePath))
+            {
+                var replaced = XNameRegex().Replace(line, string.Empty);
+                var buffer = Encoding.UTF8.GetBytes(replaced);
+                stream.Write(buffer, 0, buffer.Length);
+            }
+            
+            stream.Position = 0;
+            dict = (ResourceDictionary)XamlReader.Load(stream);
         }
 
+        var result = new Dictionary<string, DrawingGroup>();
         foreach (var key in dict.Keys)
         {
             if (key.ToString() is null) continue;
@@ -51,4 +58,7 @@ public static class DrawingResourceLoader
 
         return result;
     }
+
+    [GeneratedRegex(" x:Name=\"\\w+\"")]
+    private static partial Regex XNameRegex();
 }

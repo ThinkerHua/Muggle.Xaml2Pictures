@@ -124,8 +124,7 @@
     <value>Conversion successful.</value>
   </data>
   <data name="ConversionFailed" xml:space="preserve">
-    <value>Conversion failed. Error message:
-{0}</value>
+    <value>Conversion failed.</value>
   </data>
   <data name="SourceFile" xml:space="preserve">
     <value>Source file:</value>
@@ -160,5 +159,12 @@
     Y = {1},
     Width = {2},
     Height = {3}</value>
+  </data>
+  <data name="LoadXamlFileFailed" xml:space="preserve">
+    <value>Load XAML file failed.</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>ErrorMessage:
+{0}</value>
   </data>
 </root>

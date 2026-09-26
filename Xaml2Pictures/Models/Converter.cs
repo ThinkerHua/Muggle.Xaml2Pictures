@@ -39,8 +39,8 @@ public static class Converter
             {
                 context.DrawRectangle(Brushes.White, null,
                     new Rect(0, 0,
-                        bounds.Width + Math.Ceiling(2 * blankBorderWidth / factor),
-                        bounds.Height + Math.Ceiling(2 * blankBorderWidth / factor)));
+                        bounds.Width + 2 * blankBorderWidth / factor,
+                        bounds.Height + 2 * blankBorderWidth / factor));
             }
 
             var transform = new TranslateTransform(
@@ -54,8 +54,8 @@ public static class Converter
             context.DrawDrawing(transformedDrawing);
         }
 
-        var width = (int)Math.Ceiling(bounds.Width * factor);
-        var height = (int)Math.Ceiling(bounds.Height * factor);
+        var width = (int)(bounds.Width * factor);
+        var height = (int)(bounds.Height * factor);
 
         var renderTarget = new RenderTargetBitmap(
             width + 2 * blankBorderWidth, 

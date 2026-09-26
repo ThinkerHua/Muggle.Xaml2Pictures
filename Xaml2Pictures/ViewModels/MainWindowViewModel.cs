@@ -26,9 +26,14 @@ public partial class MainWindowViewModel : ObservableObject {
         BitmapEncoderEnum.Wmp
     ];
 
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(DrawingGroups))]
-    public required partial string XamlFilePath { get; set; }
+    public required string XamlFilePath { 
+        get; 
+        set {
+            SetProperty(ref field, value);
+            LoadDrawingGroups();
+            OnPropertyChanged(nameof(DrawingGroups));
+        }
+    }
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(ConvertDrawingGroupsToPicturesCommand))]
@@ -37,30 +42,22 @@ public partial class MainWindowViewModel : ObservableObject {
     [ObservableProperty] public required partial BitmapEncoderEnum EncoderEnum { get; set; }
 
     [ObservableProperty] public required partial double Dpi { get; set; }
-    
+
     [ObservableProperty] public required partial int BlandBorderWidth { get; set; }
 
-    public IEnumerable<KeyValuePairWrapper> DrawingGroups {
-        get {
-            try {
-                return DrawingResourceLoader.LoadAllDrawingGroups(XamlFilePath).Select(kvp => new KeyValuePairWrapper(kvp)).OrderBy(x => x.Key);
-            } catch {
-                return [];
-            }
-        }
-    }
+    public IEnumerable<KeyValuePairWrapper> DrawingGroups { get; private set; }
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(ConvertDrawingGroupsToPicturesCommand))]
     public required partial List<KeyValuePairWrapper> SelectedDrawingGroups { get; set; }
 
-    public MainWindowViewModel()
-    {
+    public MainWindowViewModel() {
         DestinationDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         EncoderEnum = BitmapEncoderEnum.Bmp;
         Dpi = 96;
         BlandBorderWidth = 5;
-        SelectedDrawingGroups = Enumerable.Empty<KeyValuePairWrapper>().ToList();
+        DrawingGroups = [];
+        SelectedDrawingGroups = [];
     }
 
     [RelayCommand(CanExecute = nameof(CanConvertDrawingGroupsToPicturesCommandExecute))]
@@ -77,7 +74,8 @@ public partial class MainWindowViewModel : ObservableObject {
 
             MessageBox.Show(string.Format(Language.ConversionSuccessful), "", MessageBoxButton.OK, MessageBoxImage.Information);
         } catch (Exception e) {
-            MessageBox.Show(string.Format(Language.ConversionFailed, e.Message), "", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(string.Format(Language.ConversionFailed + Environment.NewLine + Language.ErrorMessage, e.Message),
+                "", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -119,5 +117,14 @@ public partial class MainWindowViewModel : ObservableObject {
         };
         var result = dialog.ShowDialog();
         if (result is true) DestinationDirectory = dialog.FolderName;
+    }
+
+    private void LoadDrawingGroups() {
+        try {
+            DrawingGroups = DrawingResourceLoader.LoadAllDrawingGroups(XamlFilePath).Select(kvp => new KeyValuePairWrapper(kvp)).OrderBy(x => x.Key);
+        } catch (Exception e) {
+            MessageBox.Show(string.Format(Language.LoadXamlFileFailed + Environment.NewLine + Language.ErrorMessage, e.Message),
+                "", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
