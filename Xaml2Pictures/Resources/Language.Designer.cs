@@ -60,15 +60,6 @@ namespace Muggle.Xaml2Pictures.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Action.
-        /// </summary>
-        public static string Action {
-            get {
-                return ResourceManager.GetString("Action", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Blank border width:.
         /// </summary>
         public static string BlankBorderWidth {
@@ -137,6 +128,15 @@ namespace Muggle.Xaml2Pictures.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Floating preview.
+        /// </summary>
+        public static string FloatingPreview {
+            get {
+                return ResourceManager.GetString("FloatingPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load XAML file failed..
         /// </summary>
         public static string LoadXamlFileFailed {
@@ -151,6 +151,15 @@ namespace Muggle.Xaml2Pictures.Resources {
         public static string PictureFormat {
             get {
                 return ResourceManager.GetString("PictureFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

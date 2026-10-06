@@ -10,7 +10,7 @@
         <ApplicationIcon>Assets\Xaml2Pictures.ico</ApplicationIcon>
         <Authors>Huang YongXing (thinkerhua@hotmail.com)</Authors>
         <Copyright>© 2026 Huang YongXing. All rights reserved.</Copyright>
-        <Version>1.0.2</Version>
+        <Version>1.1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -35,6 +35,8 @@
     <ItemGroup>
         <None Remove="Assets\Xaml2Pictures.ico" />
         <Resource Include="Assets\Xaml2Pictures.ico" />
+        <None Remove="Assets\PreviewBackground.jpg" />
+        <Resource Include="Assets\PreviewBackground.jpg" />
     </ItemGroup>
 
 </Project>

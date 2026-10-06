@@ -26,23 +26,25 @@ public static partial class DrawingResourceLoader
             default:
                 return null;
         }
-
     }
 
     public static Dictionary<string, DrawingGroup> LoadAllDrawingGroups(string xamlFilePath)
     {
         ResourceDictionary dict;
-        using (var stream = new MemoryStream(1024))
+        using (var fs = new FileStream(xamlFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+        using (var sr = new StreamReader(fs))
+        using (var ms = new MemoryStream(1024))
         {
-            foreach (var line in File.ReadLines(xamlFilePath))
+            while (sr.Peek() > 0)
             {
+                var line = sr.ReadLine()!;
                 var replaced = XNameRegex().Replace(line, string.Empty);
                 var buffer = Encoding.UTF8.GetBytes(replaced);
-                stream.Write(buffer, 0, buffer.Length);
+                ms.Write(buffer, 0, buffer.Length);
             }
-            
-            stream.Position = 0;
-            dict = (ResourceDictionary)XamlReader.Load(stream);
+
+            ms.Position = 0;
+            dict = (ResourceDictionary)XamlReader.Load(ms);
         }
 
         var result = new Dictionary<string, DrawingGroup>();

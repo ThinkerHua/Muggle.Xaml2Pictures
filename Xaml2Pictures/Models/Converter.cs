@@ -13,7 +13,7 @@ public static class Converter
         string filePath,
         BitmapEncoderEnum encoder,
         double dpi,
-        int blankBorderWidth)
+        int blankBorderThickness)
     {
         ArgumentNullException.ThrowIfNull(drawing);
 
@@ -39,13 +39,13 @@ public static class Converter
             {
                 context.DrawRectangle(Brushes.White, null,
                     new Rect(0, 0,
-                        bounds.Width + 2 * blankBorderWidth / factor,
-                        bounds.Height + 2 * blankBorderWidth / factor));
+                        bounds.Width + 2 * blankBorderThickness / factor,
+                        bounds.Height + 2 * blankBorderThickness / factor));
             }
 
             var transform = new TranslateTransform(
-                -bounds.X + blankBorderWidth / factor,
-                -bounds.Y + blankBorderWidth / factor);
+                -bounds.X + blankBorderThickness / factor,
+                -bounds.Y + blankBorderThickness / factor);
 
             var transformedDrawing = new DrawingGroup();
             transformedDrawing.Children.Add(drawing);
@@ -58,8 +58,8 @@ public static class Converter
         var height = (int)(bounds.Height * factor);
 
         var renderTarget = new RenderTargetBitmap(
-            width + 2 * blankBorderWidth, 
-            height + 2 * blankBorderWidth,
+            width + 2 * blankBorderThickness, 
+            height + 2 * blankBorderThickness,
             dpi, dpi, PixelFormats.Pbgra32);
         renderTarget.Render(visual);
 

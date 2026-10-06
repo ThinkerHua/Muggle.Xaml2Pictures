@@ -23,6 +23,7 @@
 
     <Window.Resources>
         <vc:BoundsToStringValueConverter x:Key="BoundsToStringValueConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityValueConverter" />
 
         <DataTemplate x:Key="DrawingGroupDataTemplate" DataType="{x:Type vm:KeyValuePairWrapper}">
             <Grid Width="128">
@@ -72,7 +73,7 @@
 
         <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF" />
         <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9" />
-        <ControlTemplate x:Key="ListBoxTemplate1" TargetType="{x:Type ListBox}">
+        <ControlTemplate x:Key="DrawingGroupsListBox" TargetType="{x:Type ListBox}">
             <Border x:Name="Bd"
                     Padding="1"
                     Background="{TemplateBinding Background}"
@@ -95,6 +96,30 @@
                     </MultiTrigger.Conditions>
                     <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
                 </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <SolidColorBrush x:Key="TextBox.Border" Color="Red" />
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="Red" />
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="Red" />
+        <ControlTemplate x:Key="ExceptionMessageTextBox" TargetType="{x:Type TextBoxBase}">
+            <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{StaticResource TextBox.Border}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="border" Property="Opacity" Value="0.56" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource TextBox.MouseOver.Border}" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="true">
+                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource TextBox.Focus.Border}" />
+                </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
@@ -135,24 +160,34 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Column="0" Text="{x:Static res:Language.PictureFormat}" />
-            <ComboBox Grid.Column="1" SelectedItem="{Binding EncoderEnum, Mode=TwoWay}" ItemsSource="{Binding EncoderSet}" />
+            <ComboBox Grid.Column="1" SelectedItem="{Binding EncoderEnum, Mode=TwoWay}" ItemsSource="{x:Static vm:MainWindowViewModel.EncoderSet}" />
 
             <TextBlock Grid.Column="2" Text="{x:Static res:Language.DPI}" />
-            <ComboBox Grid.Column="3" SelectedValue="{Binding Dpi, Mode=TwoWay}" ItemsSource="{Binding DpiSet}" />
+            <ComboBox Grid.Column="3" SelectedValue="{Binding Dpi, Mode=TwoWay}" ItemsSource="{x:Static vm:MainWindowViewModel.DpiSet}" />
 
             <TextBlock Grid.Column="4" Text="{x:Static res:Language.BlankBorderWidth}" />
-            <TextBox Grid.Column="5" HorizontalContentAlignment="Center" Text="{Binding BlandBorderWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="5" HorizontalContentAlignment="Center" Text="{Binding BlandBorderThickness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
 
-        <Button Width="120"
-                Height="28"
-                DockPanel.Dock="Bottom"
-                Content="{x:Static res:Language.Action}"
-                Command="{Binding ConvertDrawingGroupsToPicturesCommand}" />
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Width="120" Height="28" Content="{x:Static res:Language.FloatingPreview}" Command="{Binding ShowFloatingPreviewCommand}" />
+            <Button Width="120" Height="28" Content="{x:Static res:Language.Save}" Command="{Binding ConvertDrawingGroupsToPicturesCommand}" />
+        </StackPanel>
+
+        <TextBox DockPanel.Dock="Bottom"
+                 HorizontalAlignment="Stretch"
+                 Template="{StaticResource ExceptionMessageTextBox}"
+                 IsReadOnly="True"
+                 Text="{Binding ExceptionDuringLoading, Mode=OneWay}"
+                 TextWrapping="Wrap"
+                 Visibility="{Binding HasExceptionWhenLoading, Converter={StaticResource BoolToVisibilityValueConverter}, Mode=OneWay}"
+                 d:Text="Exception example"
+                 d:Visibility="Visible">
+        </TextBox>
 
         <ListBox SelectionMode="Extended"
                  SelectionChanged="ListBox_SelectionChanged"
-                 Template="{DynamicResource ListBoxTemplate1}"
+                 Template="{DynamicResource DrawingGroupsListBox}"
                  ItemTemplate="{StaticResource DrawingGroupDataTemplate}"
                  ItemsSource="{Binding DrawingGroups, Mode=OneWay}" />
     </DockPanel>

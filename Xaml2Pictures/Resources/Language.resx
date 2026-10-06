@@ -135,8 +135,8 @@
   <data name="DPI" xml:space="preserve">
     <value>DPI:</value>
   </data>
-  <data name="Action" xml:space="preserve">
-    <value>Action</value>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="BlankBorderWidth" xml:space="preserve">
     <value>Blank border width:</value>
@@ -166,5 +166,8 @@
   <data name="ErrorMessage" xml:space="preserve">
     <value>ErrorMessage:
 {0}</value>
+  </data>
+  <data name="FloatingPreview" xml:space="preserve">
+    <value>Floating preview</value>
   </data>
 </root>
