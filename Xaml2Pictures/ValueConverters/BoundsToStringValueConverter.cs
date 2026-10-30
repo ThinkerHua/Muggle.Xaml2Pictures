@@ -9,8 +9,8 @@ public class BoundsToStringValueConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return value is Rect rect 
-            ? string.Format(Language.BoundsFormat, rect.X, rect.Y, rect.Width, rect.Height) 
+        return value is Rect rect
+            ? string.Format(Language.BoundsFormat, rect.X, rect.Y, rect.Width, rect.Height)
             : DependencyProperty.UnsetValue;
     }
 

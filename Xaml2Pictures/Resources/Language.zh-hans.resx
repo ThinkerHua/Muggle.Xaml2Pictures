@@ -170,4 +170,22 @@
   <data name="FloatingPreview" xml:space="preserve">
     <value>浮窗预览</value>
   </data>
+  <data name="MouseLeftButton" xml:space="preserve">
+    <value>鼠标左键</value>
+  </data>
+  <data name="MouseRightButton" xml:space="preserve">
+    <value>鼠标右键</value>
+  </data>
+  <data name="MouseWheel" xml:space="preserve">
+    <value>鼠标滚轮</value>
+  </data>
+  <data name="Pan" xml:space="preserve">
+    <value>平移</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>缩放</value>
+  </data>
 </root>

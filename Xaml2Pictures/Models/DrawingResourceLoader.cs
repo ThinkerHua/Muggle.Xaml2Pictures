@@ -18,11 +18,11 @@ public static partial class DrawingResourceLoader
             case DrawingBrush drawingBrush:
                 return drawingBrush.Drawing as DrawingGroup;
             case GeometryDrawing geometryDrawing:
-            {
-                var group = new DrawingGroup();
-                group.Children.Add(geometryDrawing);
-                return group;
-            }
+                {
+                    var group = new DrawingGroup();
+                    group.Children.Add(geometryDrawing);
+                    return group;
+                }
             default:
                 return null;
         }

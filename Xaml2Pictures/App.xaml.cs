@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Windows;
+﻿using System.Windows;
 using Muggle.Xaml2Pictures.Views;
 
 namespace Muggle.Xaml2Pictures;
@@ -9,7 +8,8 @@ namespace Muggle.Xaml2Pictures;
 /// </summary>
 public partial class App : Application
 {
-    protected override void OnStartup(StartupEventArgs e) {
+    protected override void OnStartup(StartupEventArgs e)
+    {
         base.OnStartup(e);
 
         var window = new MainWindow();

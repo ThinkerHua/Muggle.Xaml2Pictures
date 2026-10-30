@@ -146,11 +146,56 @@ namespace Muggle.Xaml2Pictures.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mouse left button.
+        /// </summary>
+        public static string MouseLeftButton {
+            get {
+                return ResourceManager.GetString("MouseLeftButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse right button.
+        /// </summary>
+        public static string MouseRightButton {
+            get {
+                return ResourceManager.GetString("MouseRightButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse wheel.
+        /// </summary>
+        public static string MouseWheel {
+            get {
+                return ResourceManager.GetString("MouseWheel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan.
+        /// </summary>
+        public static string Pan {
+            get {
+                return ResourceManager.GetString("Pan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Picture format:.
         /// </summary>
         public static string PictureFormat {
             get {
                 return ResourceManager.GetString("PictureFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         
@@ -169,6 +214,15 @@ namespace Muggle.Xaml2Pictures.Resources {
         public static string SaveTo {
             get {
                 return ResourceManager.GetString("SaveTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale.
+        /// </summary>
+        public static string Scale {
+            get {
+                return ResourceManager.GetString("Scale", resourceCulture);
             }
         }
         

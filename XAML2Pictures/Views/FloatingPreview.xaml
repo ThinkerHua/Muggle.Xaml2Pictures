@@ -5,8 +5,9 @@
         xmlns:local="clr-namespace:Muggle.Xaml2Pictures.Views"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Muggle.Xaml2Pictures.ViewModels"
-        Width="300"
-        Height="300"
+        xmlns:res="clr-namespace:Muggle.Xaml2Pictures.Resources"
+        Width="800"
+        Height="600"
         MinWidth="256"
         MinHeight="256"
         Topmost="True"
@@ -22,9 +23,44 @@
         <ImageBrush ImageSource="/Assets/PreviewBackground.jpg" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,16,16" />
     </Window.Background>
 
-    <Image Margin="5" Stretch="Uniform">
-        <Image.Source>
-            <DrawingImage Drawing="{Binding DrawingGroup, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-        </Image.Source>
-    </Image>
+    <Window.Resources>
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="#BBD3D3D3" />
+            <Setter Property="CornerRadius" Value="4" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5,2,5,2" />
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="Container">
+        <Image Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform">
+            <Image.Source>
+                <DrawingImage Drawing="{Binding DrawingGroup, Mode=OneWay}" />
+            </Image.Source>
+        </Image>
+
+        <Grid x:Name="Tip" Margin="5" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" />
+            <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Text="{x:Static res:Language.MouseLeftButton}" />
+            <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Text="{x:Static res:Language.Pan}" />
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Text="{x:Static res:Language.MouseWheel}" />
+            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Text="{x:Static res:Language.Scale}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Text="{x:Static res:Language.MouseRightButton}" />
+            <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Text="{x:Static res:Language.Reset}" />
+        </Grid>
+    </Grid>
 </Window>

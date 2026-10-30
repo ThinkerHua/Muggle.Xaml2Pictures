@@ -90,6 +90,11 @@ public partial class MainWindowViewModel : ObservableObject
         Watcher.Changed += (_, _) => { Application.Current.Dispatcher.Invoke(LoadDrawingGroups); };
     }
 
+    ~MainWindowViewModel()
+    {
+        Watcher.Dispose();
+    }
+
     [RelayCommand(CanExecute = nameof(CanConvertDrawingGroupsToPicturesCommandExecute))]
     private void ConvertDrawingGroupsToPictures()
     {
@@ -195,10 +200,9 @@ public partial class MainWindowViewModel : ObservableObject
         foreach (var drawingGroup in SelectedDrawingGroups)
         {
             var vm = new FloatingPreviewViewModel(XamlFilePath!, drawingGroup.Key);
-            var view = new FloatingPreview
+            var view = new FloatingPreview(vm)
             {
-                Title = drawingGroup.Key,
-                DataContext = vm
+                Title = drawingGroup.Key
             };
             view.Show();
         }

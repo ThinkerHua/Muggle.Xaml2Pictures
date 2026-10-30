@@ -58,7 +58,7 @@ public static class Converter
         var height = (int)(bounds.Height * factor);
 
         var renderTarget = new RenderTargetBitmap(
-            width + 2 * blankBorderThickness, 
+            width + 2 * blankBorderThickness,
             height + 2 * blankBorderThickness,
             dpi, dpi, PixelFormats.Pbgra32);
         renderTarget.Render(visual);

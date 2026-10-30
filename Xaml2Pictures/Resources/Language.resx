@@ -170,4 +170,22 @@
   <data name="FloatingPreview" xml:space="preserve">
     <value>Floating preview</value>
   </data>
+  <data name="MouseWheel" xml:space="preserve">
+    <value>Mouse wheel</value>
+  </data>
+  <data name="MouseLeftButton" xml:space="preserve">
+    <value>Mouse left button</value>
+  </data>
+  <data name="MouseRightButton" xml:space="preserve">
+    <value>Mouse right button</value>
+  </data>
+  <data name="Pan" xml:space="preserve">
+    <value>Pan</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
 </root>

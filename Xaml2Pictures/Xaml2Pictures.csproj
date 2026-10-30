@@ -10,7 +10,11 @@
         <ApplicationIcon>Assets\Xaml2Pictures.ico</ApplicationIcon>
         <Authors>Huang YongXing (thinkerhua@hotmail.com)</Authors>
         <Copyright>© 2026 Huang YongXing. All rights reserved.</Copyright>
-        <Version>1.1.0</Version>
+        <Version>1.2.0</Version>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugType>none</DebugType>
     </PropertyGroup>
 
     <ItemGroup>
