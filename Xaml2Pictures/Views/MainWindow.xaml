@@ -22,7 +22,8 @@
     </Window.DataContext>
 
     <Window.Resources>
-        <vc:BoundsToStringValueConverter x:Key="BoundsToStringValueConverter" />
+        <vc:BoundsToStringConverter x:Key="BoundsToStringConverter" />
+        <vc:InverseBooleanConverter x:Key="InverseBooleanConverter" />
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityValueConverter" />
 
         <DataTemplate x:Key="DrawingGroupDataTemplate" DataType="{x:Type vm:KeyValuePairWrapper}">
@@ -32,7 +33,7 @@
                     <RowDefinition Height="10" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Height="128" ToolTip="{Binding Value.Bounds, Converter={StaticResource BoundsToStringValueConverter}}">
+                <Image Grid.Row="0" Height="128" ToolTip="{Binding Value.Bounds, Converter={StaticResource BoundsToStringConverter}}">
                     <Image.Source>
                         <DrawingImage Drawing="{Binding Value}" />
                     </Image.Source>
@@ -170,7 +171,11 @@
         </Grid>
 
         <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Width="120" Height="28" Content="{x:Static res:Language.FloatingPreview}" Command="{Binding ShowFloatingPreviewCommand}" />
+            <Button Width="120" 
+                    Height="28" 
+                    Content="{x:Static res:Language.FloatingPreview}" 
+                    Command="{Binding ShowFloatingPreviewCommand}" 
+                    IsEnabled="{Binding HasExceptionWhenLoading, Mode=OneWay, Converter={StaticResource InverseBooleanConverter}}" />
             <Button Width="120" Height="28" Content="{x:Static res:Language.Save}" Command="{Binding ConvertDrawingGroupsToPicturesCommand}" />
         </StackPanel>
 

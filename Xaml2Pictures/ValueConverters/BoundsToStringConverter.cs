@@ -5,7 +5,7 @@ using Muggle.Xaml2Pictures.Resources;
 
 namespace Muggle.Xaml2Pictures.ValueConverters;
 
-public class BoundsToStringValueConverter : IValueConverter
+public class BoundsToStringConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
